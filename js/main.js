@@ -91,19 +91,19 @@ $(document).ready(function () {
     }
 
     function progressBarAnimation() {
-        // Work only for min width: 768px -> mobile phone not working!
-        if ($(window).width() < 768) {
-            return;
-        }
-
         let currentScroll = $(this).scrollTop();
         let windowHeight = $(window).height();
         let skills = $(".skill");
 
         for (let i = 0; i < skills.length; i++) {
-            if (currentScroll >= $(skills[i]).offset().top - windowHeight && currentScroll <= $(skills[i]).offset().top + ($(skills[i]).height() + 200)) {
-                let currentBar = $(".progress-bar")[i];
-                let procent = $(currentBar).attr("aria-valuenow");
+            let currentBar = $(".progress-bar")[i];
+            let procent = $(currentBar).attr("aria-valuenow");
+        
+            // If screen is on mobile phone animation not working!
+            if ($(window).width() < 768) {
+                $(currentBar).css("width", `${procent}%`)
+            }
+            else (currentScroll >= $(skills[i]).offset().top - windowHeight && currentScroll <= $(skills[i]).offset().top + ($(skills[i]).height() + 200)) {
                 $(currentBar).animate(
                     {
                         width: `${procent}%`,
