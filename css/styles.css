@@ -1,0 +1,383 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+a {
+  display: inline-block;
+  line-height: 1;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+textarea {
+  resize: none;
+}
+
+.my-section {
+  padding: 100px 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar-animated {
+    animation: progress-bar-stripes 1s linear infinite;
+    -webkit-animation: progress-bar-stripes 1s linear infinite;
+  }
+}
+
+.animated-icon2 {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  margin: 0px;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+.animated-icon2 span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+}
+
+.animated-icon2 span {
+  background: #FFF;
+}
+
+.animated-icon2 span:nth-child(1) {
+  top: 0px;
+}
+
+.animated-icon2 span:nth-child(2), .animated-icon2 span:nth-child(3) {
+  top: 10px;
+}
+
+.animated-icon2 span:nth-child(4) {
+  top: 20px;
+}
+
+.animated-icon2.open span:nth-child(1) {
+  top: 11px;
+  width: 0%;
+  left: 50%;
+}
+
+.animated-icon2.open span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.animated-icon2.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.animated-icon2.open span:nth-child(4) {
+  top: 11px;
+  width: 0%;
+  left: 50%;
+}
+
+.site-header .navbar {
+  transition: background 0.5s ease;
+}
+
+@media (min-width: 768px) {
+  .site-header .navbar {
+    background: transparent !important;
+  }
+}
+
+.site-header .navbar-brand {
+  font-weight: 500;
+}
+
+.site-header .navbar-brand::before {
+  display: inline-block;
+  content: '\f2bd';
+  font-family: "Font Awesome 5 Free";
+  font-weight: 700;
+  margin-right: 0.7rem;
+}
+
+.site-header .navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+.site-header .navbar-nav a {
+  font-weight: 500;
+}
+
+.site-header .navbar-collapse {
+  transition: height 0.5s ease;
+}
+
+.site-header .navbar-animated {
+  background: #02B875 !important;
+}
+
+.site-banner {
+  background: linear-gradient(rgba(77, 133, 117, 0.7), rgba(77, 133, 117, 0.7)), url("https://images.unsplash.com/photo-1504192010706-dd7f569ee2be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80") no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .site-banner {
+    min-height: 100vh;
+  }
+}
+
+#about .user-info {
+  opacity: 0;
+}
+
+#about .image-wrapper {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+#about a {
+  border-width: 2px;
+}
+
+#about .user-more {
+  opacity: 0;
+}
+
+#experience .card {
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.3);
+  opacity: 0;
+}
+
+#skills .skill h3 {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+}
+
+#interest .container .my-row {
+  margin-bottom: 5rem;
+}
+
+#interest .container .item {
+  opacity: 0;
+}
+
+#contact #contactMe {
+  opacity: 0;
+}
+
+#contact #findMe {
+  opacity: 0;
+}
+
+#contact .site-form {
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.35);
+}
+
+#contact .site-form .form-control {
+  border-color: #999;
+}
+
+#contact .site-form .form-control:focus {
+  border-color: #02B875;
+  box-shadow: 0 0 0 0.2rem rgba(2, 184, 117, 0.2);
+}
+
+#contact .site-form .form-control::placeholder {
+  color: #5A5A5A;
+}
+
+#contact .social .item {
+  transition: transform 0.35s ease;
+}
+
+#contact .social .item:hover {
+  text-decoration: none;
+  transform: scale(0.8);
+}
+
+#contact .social .item i {
+  font-size: 3rem;
+}
+
+#contact .social .item p {
+  font-size: 1.5rem;
+}
+
+.site-footer {
+  padding: 1rem;
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.site-footer ul {
+  margin-bottom: 0;
+}
+
+.site-footer ul a {
+  font-size: 2rem;
+  color: #FFF;
+  margin-right: 1rem;
+  transition: transform 0.35s ease, color 0.35s ease;
+}
+
+.site-footer ul a:hover {
+  transform: scale(0.8);
+  color: #333;
+}
+
+.user-animation-right {
+  animation: slideFromRight 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.user-animation-bottom {
+  animation: slideFromBottom 1.2s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@media (max-width: 767px) {
+  .user-animation-bottom {
+    animation-name: slideFromLeft;
+  }
+}
+
+.item-pop {
+  animation: popUp 1.3s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.item-left {
+  animation: rotateFromLeft 1s ease;
+  animation-fill-mode: forwards;
+}
+
+.item-right {
+  animation: rotateFromRight 1.2s ease;
+  animation-fill-mode: forwards;
+}
+
+.contacts-item-animation {
+  animation: scaleUp 2s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-1000px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(1000px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popUp {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  90% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-700px) rotate(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0);
+  }
+}
+
+@keyframes rotateFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(700px) rotate(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
