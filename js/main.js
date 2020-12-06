@@ -85,8 +85,6 @@ $(document).ready(function () {
             return;
         }
 
-        console.log("exp");
-
         let currentScroll = $(this).scrollTop();
         let windowHeight = $(window).height();
         let cards = $(".card").toArray();
