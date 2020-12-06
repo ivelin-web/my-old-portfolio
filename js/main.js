@@ -1,5 +1,7 @@
 /// <reference path='../typings/globals/jquery/index.d.ts' />
 
+let isUserAnimated = (isUserDescAnimated = isExperienceAnimated = isProgressBarAnimated = isInterestingsAnimated = isContactsAnimated = isFindMe = false);
+
 $(document).ready(function () {
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
@@ -60,22 +62,38 @@ $(document).ready(function () {
     }
 
     function userAnimation() {
+        if (isUserAnimated && isUserDescAnimated) {
+            return;
+        }
+
         let currentScroll = $(this).scrollTop();
         let windowHeight = $(window).height();
 
         if (currentScroll >= $("#about .user-info").offset().top - windowHeight + $("#about .user-info").height() / 2) {
             $(".user-info").addClass("user-animation-right");
+            isUserAnimated = true;
         }
 
         if (currentScroll >= $("#about .user-more").offset().top - windowHeight + $("#about .user-more").height() / 2) {
             $(".user-more").addClass("user-animation-bottom");
+            isUserDescAnimated = true;
         }
     }
 
     function experienceAnimation() {
+        if (isExperienceAnimated) {
+            return;
+        }
+
+        console.log("exp");
+
         let currentScroll = $(this).scrollTop();
         let windowHeight = $(window).height();
         let cards = $(".card").toArray();
+
+        if ($(cards[cards.length - 1]).hasClass("item-pop")) {
+            isExperienceAnimated = true;
+        }
 
         for (let i = 0; i < cards.length; i++) {
             if (currentScroll >= $(cards[i]).offset().top + $(cards[i]).height() / 3 - windowHeight) {
@@ -83,6 +101,7 @@ $(document).ready(function () {
                     setTimeout(function () {
                         $(cards[i]).addClass("item-pop");
                     }, (i * 1000) / 5);
+                    isExperienceAnimated = true;
                 } else {
                     $(cards[i]).addClass("item-pop");
                 }
@@ -91,19 +110,28 @@ $(document).ready(function () {
     }
 
     function progressBarAnimation() {
+        if (isProgressBarAnimated) {
+            return;
+        }
+
         let currentScroll = $(this).scrollTop();
         let windowHeight = $(window).height();
         let skills = $(".skill");
 
+        if (currentScroll > $(skills[skills.length - 1]).offset().top) {
+            isProgressBarAnimated = true;
+        }
+
         for (let i = 0; i < skills.length; i++) {
             let currentBar = $(".progress-bar")[i];
             let procent = $(currentBar).attr("aria-valuenow");
-        
+
             // If screen is on mobile phone animation not working!
             if ($(window).width() < 768) {
-                $(currentBar).css("width", `${procent}%`)
-            }
-            else (currentScroll >= $(skills[i]).offset().top - windowHeight && currentScroll <= $(skills[i]).offset().top + ($(skills[i]).height() + 200)) {
+                $(currentBar).css("width", `${procent}%`);
+                isProgressBarAnimated = true;
+                continue;
+            } else if (currentScroll >= $(skills[i]).offset().top - windowHeight && currentScroll <= $(skills[i]).offset().top + ($(skills[i]).height() + 200)) {
                 $(currentBar).animate(
                     {
                         width: `${procent}%`,
@@ -115,10 +143,17 @@ $(document).ready(function () {
     }
 
     function interestingsAnimation() {
+        if (isInterestingsAnimated) {
+            return;
+        }
+
         let currentScroll = $(this).scrollTop();
         let windowHeight = $(window).height();
-        let interest = $("#interest");
         let items = $("#interest .item");
+
+        if ($(items[items.length - 1]).hasClass("item-left") || ($(items[items.length - 1]).hasClass("item-right") && $(items[items.length - 2]).hasClass("item-left")) || $(items[items.length - 2]).hasClass("item-right")) {
+            isInterestingsAnimated = true;
+        }
 
         for (let i = 0; i < items.length - 1; i += 2) {
             // Left
@@ -134,15 +169,21 @@ $(document).ready(function () {
     }
 
     function contactsAnimation() {
+        if (isContactsAnimated && isFindMe) {
+            return;
+        }
+
         let currentScroll = $(this).scrollTop();
         let windowHeight = $(window).height();
 
         if (currentScroll >= $("#contactMe").offset().top - windowHeight + $("#contactMe").height() / 2) {
             $("#contactMe").addClass("contacts-item-animation");
+            isContactsAnimated = true;
         }
 
         if (currentScroll >= $("#findMe").offset().top - windowHeight + $("#findMe").height() / 2) {
             $("#findMe").addClass("contacts-item-animation");
+            isFindMe = true;
         }
     }
 });
